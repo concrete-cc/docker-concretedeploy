@@ -3,7 +3,9 @@ FROM docker:stable-git
 ENV CURL_VERSION 7.56.1
 
 RUN apk add --no-cache --update bash c-ares-dev openssl openssl-dev ca-certificates
-RUN apk add --no-cache --update --virtual curldeps g++ make perl && \
+RUN apk add nodejs libjpeg-turbo-utils --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/main/ --allow-untrusted
+RUN apk add yarn --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community/ --allow-untrusted
+RUN apk add --no-cache --update --virtual .curl-deps g++ make perl && \
     wget https://curl.haxx.se/download/curl-$CURL_VERSION.tar.bz2 && \
     tar xjvf curl-$CURL_VERSION.tar.bz2 && \
     rm curl-$CURL_VERSION.tar.bz2 && \
@@ -25,4 +27,4 @@ RUN apk add --no-cache --update --virtual curldeps g++ make perl && \
     rm -r curl-$CURL_VERSION && \
     rm -r /var/cache/apk && \
     rm -r /usr/share/man && \
-    apk del curldeps
+    apk del .curl-deps
