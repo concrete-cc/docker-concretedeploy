@@ -2,7 +2,7 @@ FROM docker:stable-git
 
 ENV CURL_VERSION 7.56.1
 
-RUN apk add --no-cache --update bash c-ares-dev openssl openssl-dev ca-certificates
+RUN apk add --no-cache --update bash c-ares-dev openssl openssl-dev ca-certificates optipng
 RUN apk add nodejs libjpeg-turbo-utils --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/main/ --allow-untrusted
 RUN apk add yarn --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community/ --allow-untrusted
 RUN apk add --no-cache --update --virtual .curl-deps g++ make perl && \
