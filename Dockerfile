@@ -30,3 +30,4 @@ RUN apk --no-cache add --virtual .awscli-deps py2-pip py-setuptools && \
     apk --no-cache add groff less python2 && \
     pip --no-cache-dir install awscli && \
     apk del .awscli-deps
+RUN curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
