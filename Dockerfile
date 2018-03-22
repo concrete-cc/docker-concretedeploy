@@ -1,12 +1,14 @@
 FROM docker:stable-git
 
 # Install curl/nodejs/npm/yarn + dependencies
-RUN apk add --no-cache --update \
+RUN apk update && \
+    apk add --no-cache --update \
     bash \
     c-ares-dev \
     openssl \
     openssl-dev \
-    ca-certificatesbinutils-gold \
+    ca-certificates \
+    binutils-gold \
     curl-dev \
     curl \
     autoconf \
